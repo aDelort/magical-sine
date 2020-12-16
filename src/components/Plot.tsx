@@ -1,41 +1,21 @@
-import React from "react";
-import { Line } from "react-chartjs-2";
+import React from 'react';
+import { Line } from 'react-chartjs-2';
+import { range } from 'mathjs';
 
 export const Plot = () => {
-  const range = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    9,
-    10,
-    11,
-    12,
-    13,
-    14,
-    15,
-    16,
-    17,
-    18,
-    19,
-  ];
+  const xValues = range(0, Math.PI * 2, 0.1).toArray() as number[];
 
   return (
     <div>
       <Line
         data={{
-          labels: range,
+          labels: xValues,
           datasets: [
             {
-              label: "Sinus",
-              data: range.map(Math.sin),
-              backgroundColor: "rgba(255, 99, 132, 0.2)",
-              borderColor: "rgba(255, 99, 132, 1)",
+              label: 'Sinus',
+              data: xValues.map(Math.sin),
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1,
             },
           ],
