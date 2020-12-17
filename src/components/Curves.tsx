@@ -4,15 +4,27 @@ export type Param = number;
 export type SetParam = (newValue: Param) => void;
 export type SettableParam = { value: Param; setValue: SetParam };
 
-export const ParamInputs = ({
-  settableParams,
+export type SettableCurve = {
+  frequency: SettableParam;
+  amplitude: SettableParam;
+};
+
+export const Curves = ({
+  settableCurves,
 }: {
-  settableParams: SettableParam[];
+  settableCurves: SettableCurve[];
 }) => (
-  <div>
-    {settableParams.map((settableParam, index) => (
-      <ParamInput key={index} settableParam={settableParam} />
+  <>
+    {settableCurves.map((settableCurve, index) => (
+      <Curve key={index} settableCurve={settableCurve} />
     ))}
+  </>
+);
+
+const Curve = ({ settableCurve }: { settableCurve: SettableCurve }) => (
+  <div>
+    <ParamInput settableParam={settableCurve.frequency} />
+    <ParamInput settableParam={settableCurve.amplitude} />
   </div>
 );
 
