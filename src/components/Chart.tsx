@@ -27,6 +27,7 @@ export const Chart = ({ curves }: { curves: Curve[] }) => {
             borderWidth: 1,
           })),
         }}
+        datasetKeyProvider={(dataset) => dataset.label}
         options={{
           scales: {
             xAxes: [
